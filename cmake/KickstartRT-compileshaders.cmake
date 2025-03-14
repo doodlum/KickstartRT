@@ -62,7 +62,7 @@ function(${SDK_NAME}_compile_shaders)
         set(CFLAGS_DXIL "$<IF:$<CONFIG:Debug>,-Zi -Qembed_debug,-Zi -Zss -Fd ${params_DXIL}_pdb/>")
     endif()
     if (params_SPIRV_DXC)
-        set(CFLAGS_SPIRV "$<IF:$<CONFIG:Debug>,-Zi -Qembed_debug,-Qstrip_debug -Qstrip_reflect>")
+        set(CFLAGS_SPIRV "$<IF:$<CONFIG:Debug>,-Zi -Qembed_debug,-Qstrip_debug>")
     endif()
 
     if (params_DXIL)
