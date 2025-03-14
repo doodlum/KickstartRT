@@ -62,7 +62,7 @@ namespace KickstartRT_NativeLayer::Log
         if (severity < s_minSeverity || (!s_defaultMessageProcStatus))
             return;
 
-#if WIN32
+#ifdef WIN32
         const wchar_t* severityText = L"";
         switch (severity)
         {
