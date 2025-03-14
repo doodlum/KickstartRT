@@ -24,6 +24,8 @@
 #include <assert.h>
 #include <cstring>
 
+#define NOMINMAX
+
 namespace KickstartRT_NativeLayer::GraphicsAPI {
 
 #if defined(GRAPHICS_API_VK)
@@ -4123,7 +4125,7 @@ namespace KickstartRT_NativeLayer::GraphicsAPI {
         case D3D12_UAV_DIMENSION_TEXTURE3D:
             desc.Texture3D.MipSlice = mipLevel;
             desc.Texture3D.FirstWSlice = 0;
-            desc.Texture3D.WSize = std::max(1U, tex->m_depth >> mipLevel);
+            desc.Texture3D.WSize = std::max<uint32_t>(1U, tex->m_depth >> mipLevel);
             break;
         default:
             Log::Fatal(L"Invalid UAV dimension detected.");

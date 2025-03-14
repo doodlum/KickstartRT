@@ -19,10 +19,10 @@
 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 * DEALINGS IN THE SOFTWARE.
 */
+#define NOMINMAX
 #include "Platform.h"
 #include "Log.h"
 #include "VirtualFS.h"
-
 #include <fstream>
 #include <assert.h>
 #include <algorithm>

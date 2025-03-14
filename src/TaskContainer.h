@@ -20,6 +20,9 @@
 * SOFTWARE.
 */
 #pragma once
+
+#define NOMINMAX
+
 #include <Platform.h>
 #include <OS.h>
 #include <Log.h>
@@ -30,7 +33,7 @@ namespace KickstartRT_NativeLayer
 	class Scene;
 
 	// A union of RenderTaskParams would work as well, but it runs in to compile issues due to non-trivial constructor!
-	static constexpr size_t cexpr_max(size_t a, size_t b) { return std::max(a, b); }
+	static constexpr size_t cexpr_max(size_t a, size_t b) { return std::max<size_t>(a, b); }
 	template <typename ... TArgs>
 	static constexpr size_t cexpr_max(size_t a, size_t b, TArgs ... args) { return cexpr_max(cexpr_max(a, b), args...); }
 
