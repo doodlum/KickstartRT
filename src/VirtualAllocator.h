@@ -21,6 +21,8 @@
 */
 #pragma once
 
+#define NOMINMAX
+
 #include <type_traits>
 #include <tuple>
 #include <vector>
@@ -450,7 +452,7 @@ namespace VirtualAllocator {
 
 			// register (update) free entry;
 			foundEnt->m_freeItr = freePages.insert({ foundEnt->m_nbPages, foundEnt });
-			foundBlock->m_largestFreeInPages = std::max(foundBlock->m_largestFreeInPages, foundEnt->m_nbPages);
+			foundBlock->m_largestFreeInPages = std::max<uint32_t>(foundBlock->m_largestFreeInPages, foundEnt->m_nbPages);
 
 			return true;
 		}
@@ -913,7 +915,7 @@ namespace VirtualAllocator {
 				}
 			}
 			assert(o < m_orderList.size());
-			b->m_largestOrderP1 = std::max(o+1, b->m_largestOrderP1);
+			b->m_largestOrderP1 = std::max<size_t>(o+1, b->m_largestOrderP1);
 
 			return true;
 		}
