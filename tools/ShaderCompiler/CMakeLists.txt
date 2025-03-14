@@ -45,7 +45,7 @@ target_include_directories(${SDK_NAME}_ShaderCompiler PUBLIC ${CMAKE_CURRENT_SOU
 target_link_libraries(${SDK_NAME}_ShaderCompiler cxxopts Threads::Threads)
 
 if(MSVC)
-	target_compile_definitions(${SDK_NAME}_ShaderCompiler PRIVATE _CRT_SECURE_NO_WARNINGS)
+	target_compile_definitions(${SDK_NAME}_ShaderCompiler PRIVATE _CRT_SECURE_NO_WARNINGS WIN32)
 endif()
 
 set_property(TARGET ${SDK_NAME}_ShaderCompiler PROPERTY FOLDER "Tools")
