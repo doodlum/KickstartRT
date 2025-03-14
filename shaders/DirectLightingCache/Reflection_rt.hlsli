@@ -228,7 +228,7 @@ void rgs(uint2 LaunchIndex)
 #if DEMODULATE_SPECULAR
 		// Demodulate preintegrated specular reflectance from specular color.
 		float3 specularReflectance = approximateGGXIntegral(material.baseColor, material.roughness * material.roughness, saturate(dot(shadingNormal, V)));
-		float3 specularFactor = (specularReflectance <= 0.0f ? 0.0f : 1.0f / specularReflectance);
+		float3 specularFactor = select(1.0f / specularReflectance, 0.0f, specularReflectance <= 0.0f);
 		brdfWeight = brdfWeight * specularFactor;
 		u_OutputAuxTex[samplePos].xyz = specularReflectance;
 #endif

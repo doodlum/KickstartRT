@@ -169,6 +169,7 @@ namespace LightCache
 
     DLCBufferIndex SampleTileCache(Query query, out uint tileIndex, out float3 tileData, out bool hasClearTag)
     {
+        hasClearTag = false; // Ensure initialization
 #if KICKSTARTRT_ENABLE_DIRECT_LIGHTING_CACHE_INDIRECTION_TABLE
         uint indexBufferSlot, indexBufferBaseOffset, DLCBufferSlot, DLCBufferBaseOffset;
         {
@@ -225,7 +226,7 @@ namespace LightCache
     }
 
     DLCBufferIndex SampleMeshColor(MeshColors::MeshColorPrimInfo primInfo, Query query, float3 bc3, float2 bc, out uint index, out float3 color, out bool hasClearTag) {
-
+        hasClearTag = false; // Ensure initialization
         const uint2 ij = primInfo.face.GetR() * bc.xy;
         const uint k = primInfo.face.GetR() - ij.x - ij.y;
 

@@ -122,7 +122,7 @@ enum class Debug : uint {
 
 float2 oct_wrap(float2 v)
 {
-	return (1.f - abs(v.yx)) * (v.xy >= 0.f ? 1.f : -1.f);
+    return (1.f - abs(v.yx)) * select(-1.f, 1.f, v.xy >= 0.f);
 }
 
 float3 oct_to_ndir_snorm(float2 p)
